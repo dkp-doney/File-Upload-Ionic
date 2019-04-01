@@ -1,0 +1,35 @@
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Upload Data</ion-title>
+    </ion-navbar>
+  </ion-header>
+
+
+<ion-content padding>
+
+  <h4>Details of Pending Uploads</h4>
+  <br>
+  <table style="width:100%">
+    <tr style="color:blue">
+      <th>Farmer Name</th>
+      <th>File Type</th>
+      <th>File Name</th>
+      <!-- <th>File loc</th> -->
+    </tr>
+    <tr *ngFor="let up of items">
+      <td>{{up.name}}</td>
+      <td> {{up.type}} </td>
+      <td> {{up.filname}} </td>
+      <!-- <td> {{up.floc}} </td> -->
+
+    </tr>
+  </table> 
+ 
+  <br>
+  <br>
+  <br>
+  <button ion-button color="secondary" full (click)="sync()" >Sync</button>
+</ion-content>

@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title *ngFor="let item of items">
+      {{item.id + ". " + farmerName}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <!-- <div>
+    <img src="{{pathForImage(lastImage)}}" style="width: 100%" [hidden]="lastImage === null" (click)="returnId(item)">
+  </div> -->
+   
+ 
+  
+  <h3 >Add Media for {{farmerName}}</h3>
+
+  <ion-card-content>
+    <ion-buttons *ngFor="let item of items">
+      <ion-row>
+        <ion-list>
+          <ion-item>
+          <button ion-item full color="primary" (click)="returnId(item); presentActionSheet()">
+          <ion-icon name="camera"></ion-icon>&nbsp;&nbsp;Select Image&nbsp;&nbsp;</button>
+          </ion-item>
+          <ion-item>
+              <button ion-item full color="primary" (click)="startRecord()" *ngIf="!recording">
+              <ion-icon name="mic"></ion-icon>&nbsp;&nbsp;Start Record</button>
+          </ion-item>
+          <ion-item>
+            <button ion-item full color="primary" (click)="stopRecord()" *ngIf="recording">
+            <ion-icon name="mic-off"></ion-icon>&nbsp;&nbsp;Stop Record</button>
+          </ion-item>
+        </ion-list>
+      </ion-row>
+    </ion-buttons>
+  </ion-card-content>
+  <h5>Add Notes for {{farmerName}}</h5>
+  <ion-textarea col="10" row="20" [(ngModel)]="note" placeholder="Type your observations"></ion-textarea>
+  <button ion-item (click)="addText()" color="secondary">Save notes</button>
+  <h4>Details of Pending Uploads</h4>
+  <br>
+  <table style = "width: 100%">
+    <tr style="color:blue">
+      <th>File Type</th>
+      <!-- <th>Time Stamp</th> -->
+      <th>File Name</th>
+    
+
+    </tr>
+    <tr *ngFor="let up of farm">
+      <td> {{up.type}} </td>
+      <!-- <td> {{up.time}} </td> -->
+      <td>{{up.name}}</td>
+    </tr>
+  </table>
+  
+</ion-content>
